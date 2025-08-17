@@ -1,5 +1,7 @@
+
 "use client";
 import React, { useState, useEffect, } from 'react';
+import Image from 'next/image';
 import { 
   Car, Building, Home, Sparkles, CheckCircle, Star, 
   Phone, Mail, MapPin, MessageCircle, ArrowRight, 
@@ -327,10 +329,13 @@ const HeroSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-sky-400/30 to-blue-500/30 rounded-full blur-3xl scale-110"></div>
                 
                 {/* Mascot Image */}
-                <img
+                <Image
                   src="/img.jpeg"
                   alt="Mascotte Riyzi Wash holding sponge"
+                  width={600}
+                  height={600}
                   className="relative max-h-[500px] lg:max-h-[600px] w-auto rounded-lg drop-shadow-2xl object-contain hover:scale-105 transition-transform duration-500"
+                  priority
                 />
                 
                 {/* Floating elements around mascot */}
@@ -365,7 +370,7 @@ const ServicesSection = () => {
     {
       icon: Car,
       title: "Lavage véhicules",
-      description: "Intérieur et extérieur, votre véhicule retrouve son éclat d'origine avec notre méthode vapeur",
+      description: "Intérieur et extérieur, votre véhicule retrouve son éclat d&apos;origine avec notre méthode vapeur",
       gradient: "from-sky-500 to-cyan-400"
     },
     {
@@ -466,7 +471,7 @@ const AboutSection = () => {
             <Droplet className="text-white drop-shadow-lg" size={40} />
           </div>
           <div className="text-white text-2xl font-bold drop-shadow-lg">10+ Années</div>
-          <div className="text-blue-100 drop-shadow-md">d'Excellence</div>
+          <div className="text-blue-100 drop-shadow-md">d&apos;Excellence</div>
         </div>
       </div>
     </div>
@@ -477,20 +482,20 @@ const AboutSection = () => {
             isInView ? 'translate-x-0 opacity-100' : 'translate-x-12 opacity-0'
           }`}>
             <h2 className="text-4xl font-bold text-gray-900  mb-8">
-              L'Excellence du 
+              L&apos;Excellence du 
               <span className="block bg-gradient-to-r from-blue-600 to-sky-500 bg-clip-text  text-transparent">
                 Nettoyage Vapeur
               </span>
             </h2>
             
             <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-              Pionniers du nettoyage à vapeur au Maroc, nous révolutionnons l'industrie avec 
+              Pionniers du nettoyage à vapeur au Maroc, nous révolutionnons l&apos;industrie avec 
               des techniques écologiques et des résultats exceptionnels.
             </p>
             
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
               Notre mission : offrir un service premium qui dépasse vos attentes, 
-              tout en préservant votre santé et l'environnement.
+              tout en préservant votre santé et l&apos;environnement.
             </p>
 
             <div className="grid grid-cols-2 gap-6 mb-8">
@@ -530,7 +535,7 @@ const WhyChooseUsSection = () => {
     {
       icon: Droplet,
       title: "100% Vapeur",
-      description: "Nettoyage sans produits chimiques, respectueux de votre santé et de l'environnement",
+      description: "Nettoyage sans produits chimiques, respectueux de votre santé et de l&apos;environnement",
       color: "text-blue-600"
     },
     {
@@ -675,7 +680,7 @@ const GallerySection = () => {
             Nos <span className="bg-gradient-to-r from-blue-600 to-sky-500 bg-clip-text text-transparent">Réalisations</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Des transformations spectaculaires qui parlent d'elles-mêmes
+            Des transformations spectaculaires qui parlent d&apos;elles-mêmes
           </p>
         </div>
 
@@ -685,7 +690,7 @@ const GallerySection = () => {
               className="flex transition-transform duration-700 ease-out"
               style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
-              {projects.map((project, index) => (
+              {projects.map((project) => (
                 <div key={project.id} className="w-full flex-shrink-0 group">
                   <div 
                     className="relative aspect-video overflow-hidden bg-cover bg-center bg-no-repeat transform transition-all duration-500 hover:scale-105"
@@ -789,7 +794,7 @@ const TestimonialsSection = () => {
       name: "Hassan Benali",
       role: "Propriétaire",
       company: "Villa Anfa",
-      content: "Service exceptionnel pour ma maison. L'équipe est professionnelle, ponctuelle et le résultat dépasse mes attentes. Je recommande vivement RIYZI WASH à tous mes proches.",
+      content: "Service exceptionnel pour ma maison. L&apos;équipe est professionnelle, ponctuelle et le résultat dépasse mes attentes. Je recommande vivement RIYZI WASH à tous mes proches.",
       rating: 5,
       image: "/testimonial2.jpg"
     },
@@ -797,7 +802,7 @@ const TestimonialsSection = () => {
       name: "Aicha Kassimi",
       role: "Responsable Flotte",
       company: "Transport Elite",
-      content: "Nos véhicules n'ont jamais été aussi propres ! Le service de lavage intérieur/extérieur est parfait. Relation client exceptionnelle, je suis conquise par leur professionnalisme.",
+      content: "Nos véhicules n&apos;ont jamais été aussi propres ! Le service de lavage intérieur/extérieur est parfait. Relation client exceptionnelle, je suis conquise par leur professionnalisme.",
       rating: 5,
       image: "/testimonial3.jpeg"
     }
@@ -891,7 +896,7 @@ const TestimonialsSection = () => {
                       
                       {/* Testimonial Content */}
                       <blockquote className="text-lg text-gray-700 mb-8 italic leading-relaxed max-w-2xl mx-auto">
-                        "{testimonial.content}"
+                        &ldquo;{testimonial.content}&rdquo;
                       </blockquote>
                       
                       {/* Client Info */}
@@ -985,7 +990,7 @@ const CTASection = () => {
         }`}>
           <h2 className="text-5xl md:text-6xl font-bold text-white mb-8 leading-tight drop-shadow-2xl">
             Transformez Vos Espaces
-            <span className="block text-sky-200">Dès Aujourd'hui</span>
+            <span className="block text-sky-200">Dès Aujourd&apos;hui</span>
           </h2>
           
           <p className="text-xl text-blue-100 mb-12 max-w-2xl mx-auto leading-relaxed drop-shadow-lg">
@@ -1179,7 +1184,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-400 text-center md:text-left mb-4 md:mb-0">
               <p>&copy; 2025 RIYZI WASH. Tous droits réservés.</p>
-              <p className="text-sm mt-1">Conçu avec ❤️ pour l'excellence</p>
+              <p className="text-sm mt-1">Conçu avec ❤️ pour l&apos;excellence</p>
             </div>
             
             <div className="flex space-x-6 text-sm">
@@ -1187,7 +1192,7 @@ const Footer = () => {
                 Politique de confidentialité
               </a>
               <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
-                Conditions d'utilisation
+                Conditions d&apos;utilisation
               </a>
             </div>
           </div>
@@ -1196,7 +1201,6 @@ const Footer = () => {
     </footer>
   );
 };
-
 
 // Main Landing Page Component
 const RiyziWashLanding = () => {
