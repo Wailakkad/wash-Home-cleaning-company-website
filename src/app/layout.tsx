@@ -9,6 +9,11 @@ export const metadata: Metadata = {
   description: 'Service de nettoyage à domicile et vapeur haut de gamme. Solutions écologiques pour particuliers et entreprises au Maroc.',
   keywords: 'nettoyage vapeur, lavage auto, nettoyage bureau, nettoyage maison, Casablanca, Mohammedia',
   authors: [{ name: 'RIYZI WASH' }],
+  icons: {
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
+  },
   openGraph: {
     title: 'RIYZI WASH | Nettoyage vapeur professionnel',
     description: 'Service de nettoyage à domicile et vapeur haut de gamme',
