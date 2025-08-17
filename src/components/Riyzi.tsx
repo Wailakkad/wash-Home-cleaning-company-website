@@ -9,47 +9,50 @@ import {
   Facebook, Instagram, Linkedin, Play , Menu, X
 } from 'lucide-react';
 
+type AnimatedCounterProps = {
+  end: number;
+  duration?: number;
+};
 // Custom hook for intersection observer
 const useInView = (threshold = 0.1, rootMargin = '0px') => {
   const [isInView, setIsInView] = useState(false);
-  const [ref, setRef] = useState(null);
 
-  useEffect(() => {
-    if (!ref) return;
+  const ref = React.useCallback((node: HTMLElement | null) => {
+    if (!node) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => setIsInView(entry.isIntersecting),
       { threshold, rootMargin }
     );
 
-    observer.observe(ref);
+    observer.observe(node);
     return () => observer.disconnect();
-  }, [ref, threshold, rootMargin]);
+  }, [threshold, rootMargin]);
 
-  return [setRef, isInView];
+  return [ref, isInView] as const;
 };
 
 // Animated Counter Component
-const AnimatedCounter = ({ end, duration = 2000 }) => {
+const AnimatedCounter = ({ end, duration = 2000 }: AnimatedCounterProps) => {
   const [count, setCount] = useState(0);
   const [ref, isInView] = useInView(0.5);
 
-  useEffect(() => {
-    if (!isInView) return;
+ useEffect(() => {
+  if (!isInView) return;
 
-    let startTime;
-    const animate = (currentTime) => {
-      if (!startTime) startTime = currentTime;
-      const progress = Math.min((currentTime - startTime) / duration, 1);
-      setCount(Math.floor(progress * end));
-      
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
-    };
+  let startTime: number | undefined;
+  const animate = (currentTime: number) => {
+    if (startTime === undefined) startTime = currentTime;
+    const progress = Math.min((currentTime - (startTime ?? currentTime)) / duration, 1);
+    setCount(Math.floor(progress * end));
     
-    requestAnimationFrame(animate);
-  }, [isInView, end, duration]);
+    if (progress < 1) {
+      requestAnimationFrame(animate);
+    }
+  };
+  
+  requestAnimationFrame(animate);
+}, [isInView, end, duration]);
 
   return <span ref={ref}>{count}</span>;
 };
@@ -187,7 +190,7 @@ const HeroSection = () => {
   useEffect(() => {
     setIsLoaded(true);
     
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e : any) => {
       setMousePosition({
         x: (e.clientX / window.innerWidth) * 20,
         y: (e.clientY / window.innerHeight) * 20
@@ -652,7 +655,7 @@ const GallerySection = () => {
     return () => clearInterval(timer);
   }, [isAutoplay, projects.length]);
 
-  const goToSlide = (index) => {
+  const goToSlide = (index : any) => {
     setCurrentSlide(index);
     setIsAutoplay(false);
     setTimeout(() => setIsAutoplay(true), 10000);
@@ -1047,7 +1050,7 @@ const Footer = () => {
     "Nettoyage vapeur", "Lavage véhicules", "Nettoyage bureaux", "Nettoyage maisons"
   ];
 
-  const handleNewsletterSubmit = (e) => {
+  const handleNewsletterSubmit = (e : any) => {
     e.preventDefault();
     // Handle newsletter subscription
     setEmail('');
