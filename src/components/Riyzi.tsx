@@ -190,7 +190,7 @@ const HeroSection = () => {
   useEffect(() => {
     setIsLoaded(true);
     
-    const handleMouseMove = (e : any) => {
+    const handleMouseMove = (e : MouseEvent) => {
       setMousePosition({
         x: (e.clientX / window.innerWidth) * 20,
         y: (e.clientY / window.innerHeight) * 20
@@ -655,7 +655,7 @@ const GallerySection = () => {
     return () => clearInterval(timer);
   }, [isAutoplay, projects.length]);
 
-  const goToSlide = (index : any) => {
+  const goToSlide = (index : number) => {
     setCurrentSlide(index);
     setIsAutoplay(false);
     setTimeout(() => setIsAutoplay(true), 10000);
@@ -1050,7 +1050,7 @@ const Footer = () => {
     "Nettoyage vapeur", "Lavage véhicules", "Nettoyage bureaux", "Nettoyage maisons"
   ];
 
-  const handleNewsletterSubmit = (e : any) => {
+  const handleNewsletterSubmit = (e: React.FormEvent<HTMLFormElement> ) => {
     e.preventDefault();
     // Handle newsletter subscription
     setEmail('');
